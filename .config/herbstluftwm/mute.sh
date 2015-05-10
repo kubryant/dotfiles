@@ -6,6 +6,3 @@ else
     echo "unmute"
     amixer set Master unmute
 fi
-
-
-
