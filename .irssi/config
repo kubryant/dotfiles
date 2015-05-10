@@ -247,9 +247,7 @@ settings = {
 ## HILIGHTS
 hilights = (
   # {{{
-  { text = "molester"; nick = "no"; word = "yes"; },
-  { text = "youneck"; nick = "no"; word = "yes"; },
-  { text = "unek"; nick = "yes"; word = "no"; }
+  { text = "bryant"; nick = "yes"; word = "no"; }
 );
 # }}}
 
