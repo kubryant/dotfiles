@@ -1,0 +1,2 @@
+# dotfiles
+Configurations for Arch 
