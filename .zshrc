@@ -1,12 +1,14 @@
-# Path to your oh-my-zsh installation.
-export ZSH=/home/bryant/.oh-my-zsh
+# exports
+export ZSH=~/.oh-my-zsh
+export EDITOR=vim
+export SHELL=/bin/zsh
+# export PATH=$PATH:
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="afowler"
-#ZSH_THEME="agnoster"
+ZSH_THEME="bryant"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -36,10 +38,6 @@ HIST_STAMPS="mm/dd/yyyy"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git python)
 
-# User configuration
-export PATH="/usr/local/sbin:/usr/local/bin:/usr/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl"
-# export MANPATH="/usr/local/man:$MANPATH"
-
 source $ZSH/oh-my-zsh.sh
 
 # bind keys
@@ -50,10 +48,11 @@ bindkey '\e[3~'   delete-char
 bindkey '\e[4~'   end-of-line
 bindkey '\e[F'    end-of-line
 bindkey '\eOF'    end-of-line
-bindkey '^R'	  history-incremental-search-backward
+bindkey '^R'      history-incremental-search-backward
 
 # command alias
 alias ll='ls -la'
-alias netrestart='sudo systemctl restart netctl-auto@wlp1s0.service'
-alias shutdown='sudo shutdown -P 0'
-alias flip='sh ~/.config/herbstluftwm/flip.sh'
+alias vms='VBoxManage list runningvms'
+
+# start
+clear

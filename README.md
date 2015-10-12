@@ -1,2 +1,2 @@
 # dotfiles
-Configurations for Arch 
+Configurations for Arch and Mac
