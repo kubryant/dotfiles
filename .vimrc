@@ -9,20 +9,22 @@ set nocompatible
 "" Set Leader
 let mapleader=","
 
-"" Highlight search
+"" Search settings
 set hlsearch
 set incsearch
+set ignorecase
+set smartcase
 
 "" Buffer settings
 set hidden
 
 "" Set textwidth to 80, this implies word wrap.
-""set textwidth=80
+"" set textwidth=80
+set synmaxcol=250
 
 "" Set column 80 to red
-"" highlight OverLength ctermbg=green ctermfg=white guibg=#592929
-highlight OverLength ctermbg=black guibg=#592929
-match OverLength /\%81v.\+/
+"" highlight OverLength ctermbg=8 ctermfg=red
+"" match OverLength /\%81v.\+/
 
 "" Show line numbers.
 set nu
@@ -30,11 +32,18 @@ set relativenumber
 
 "" Tabs settings
 filetype plugin indent on
-set softtabstop=2
-set tabstop=2
-set shiftwidth=2
 set autoindent
-set expandtab
+"" 4 space hard tabs
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set noexpandtab
+
+"" 2 space tabs
+"" set softtabstop=2
+"" set tabstop=2
+"" set shiftwidth=2
+"" set expandtab
 
 "" But TABs are needed in Makefiles
 au BufNewFile,BufReadPost Makefile se noexpandtab
@@ -52,11 +61,6 @@ set nostartofline
 set nowrap
 set listchars=eol:$,extends:>
 
-"" Next / previous error with Tab / Shift+Tab.
-"" map <silent> <Tab> :cn<CR>
-"" map <silent> <S+Tab> :cp<CR>
-"" map <silent> <BS><Tab> :cp<CR>
-
 "" Always show the name of the file being edited.
 set ls=2
 
@@ -72,7 +76,7 @@ set gcr=a:blinkon0
 "" After this many msecs do not imap.
 set timeoutlen=500
 
-"" Set update time to 1 second (default is 4 seconds), convenient vor taglist.vim.
+"" Set update time to 1 second (default is 4 seconds), convenient for taglist.vim.
 set updatetime=500
 
 "" Toggle between .h and .cpp with F4.
@@ -112,7 +116,6 @@ map <silent> <F4> :call ToggleBetweenHeaderAndSourceFile()<CR>
 
 "" Latex Suite 1.5 wants it
 "" REQUIRED. This makes vim invoke latex-suite when you open a tex file.
-"" filetype plugin on
 
 "" IMPORTANT: grep will sometimes skip displaying the file name if you
 "" search in a single file. This will confuse latex-suite. Set your grep
@@ -138,12 +141,6 @@ set wildignore+=*/target/*
 "" Set backspace
 set backspace=indent,eol,start
 
-"" Reformat comment on current line. TODO: explain how.
-"" map <silent> hc ==I  <ESC>:.s/\/\/ */\/\//<CR>:nohlsearch<CR>j
-
-"" Make sure == also indents #ifdef etc.
-"" noremap <silent> == IX<ESC>==:.s/X//<CR>:nohlsearch<CR>
-
 "" Cycling through Windows quicker.
 "" map <C-M> <C-W>j<C-W>_
 "" map <C-K> <C-W>k<C-W>_
@@ -166,17 +163,19 @@ inoremap <Down> <Nop>
 inoremap <PageUp> <Nop>
 inoremap <PageDown> <Nop>
 
-"" Buffer Maps
+"" Buffer maps
 nnoremap <tab> :bn<CR>
 nnoremap <s-tab> :bp<CR>
 
-"" Make it easy to update/reload _vimrc.
-:nmap <Leader>s :source $HOME/.vimrc
-:nmap <Leader>v :e $HOME/.vimrc
-:nmap <Leader>b :CtrlPBuffer<CR>
+"" Leader maps
+nnoremap <Leader>s :source $HOME/.vimrc
+nnoremap <Leader>v :e $HOME/.vimrc
+nnoremap <Leader>b :CtrlPBuffer<CR>
+nnoremap <Leader>sudo :w !sudo tee %
 
 "" Plugins
 so /usr/local/Cellar/vim/7.4.884/share/vim/vim74/macros/matchit.vim
+so ~/.vim/closetag.vim
 execute pathogen#infect()
 
 "" CtrlP Settings
