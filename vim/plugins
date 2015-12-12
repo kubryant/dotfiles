@@ -1,4 +1,9 @@
+// scripts
 closetag.vim
+matchit.vim
+beautify.vim
+
+// plugins
 ack.vim
 ctrlp.vim
 syntastic

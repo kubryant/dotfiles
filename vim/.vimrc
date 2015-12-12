@@ -166,8 +166,12 @@ inoremap <PageUp> <Nop>
 inoremap <PageDown> <Nop>
 
 "" Buffer maps
+nnoremap <silent> <Esc><Esc> :nohlsearch<CR>
+nnoremap ! :!
 nnoremap <tab> :bn<CR>
 nnoremap <s-tab> :bp<CR>
+nmap <silent> n /<CR>
+nmap <silent> N ?<CR>
 
 "" Leader maps
 nnoremap <Leader>s :source $HOME/.vimrc
