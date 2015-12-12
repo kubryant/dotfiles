@@ -1,0 +1,8 @@
+closetag.vim
+ack.vim
+ctrlp.vim
+syntastic
+vim-airline
+vim-css-color
+vim-fugitive
+vim-surround
