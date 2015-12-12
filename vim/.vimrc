@@ -2,6 +2,8 @@
 colorscheme bryantpeach
 syntax on
 set encoding=utf-8
+set t_Co=256
+set mouse=a
 
 "" No need to be compatible with vi and lose features.
 set nocompatible
@@ -52,7 +54,7 @@ au BufNewFile,BufReadPost Makefile se noexpandtab
 set showmatch
 
 "" Choose the right syntax highlightning per TAB-completion :-)
-"" map <F2> :source $VIM/syntax/
+map <F2> :source $VIM/syntax/
 
 "" Keep the horizontal cursor position when moving vertically.
 set nostartofline
@@ -173,6 +175,9 @@ nnoremap <Leader>v :e $HOME/.vimrc
 nnoremap <Leader>b :CtrlPBuffer<CR>
 nnoremap <Leader>sudo :w !sudo tee %
 
+"" Abbreviations
+iab lorem Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
 "" Plugins
 so /usr/local/Cellar/vim/7.4.884/share/vim/vim74/macros/matchit.vim
 so ~/.vim/closetag.vim
@@ -181,6 +186,7 @@ execute pathogen#infect()
 "" CtrlP Settings
 let g:ctrlp_map = '<Leader>p'
 let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_follow_symlinks = 1
 
 "" Syntastic settings
 function! ToggleErrors()

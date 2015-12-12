@@ -51,8 +51,9 @@ bindkey '\eOF'    end-of-line
 bindkey '^R'      history-incremental-search-backward
 
 # command alias
-alias ll='ls -la'
+alias ll='ls -lah'
 alias vms='VBoxManage list runningvms'
 
+alias vimgit='vim $(git status --porcelain | sed -ne "s/^ M //p")'
 # start
 clear
