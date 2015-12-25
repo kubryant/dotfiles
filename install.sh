@@ -2,7 +2,7 @@
 # copy .zshrc, .vimrc, and themes,
 # and then install all vim plugins
 
-if [[ -d ~/.oh-my-zsh ]]; then
+if [ -d ~/.oh-my-zsh ]; then
 	echo "Oh-my-zsh already installed. Skipping to the next step!"
 else
 	sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
@@ -10,11 +10,11 @@ fi
 
 echo "Copying .zshrc and oh-my-zsh theme to ~"
 cp -i ./zsh/.zshrc ~
-cp -ir ./zsh/themes ~/.oh-my-zsh/themes 
+cp -ir ./zsh/themes/* ~/.oh-my-zsh/themes 
 
 echo "Copying .vimrc and .vim to ~"
 cp -i ./vim/.vimrc ~
-if [[ ! -d ~/.vim ]]; then
+if [ ! -d ~/.vim ]; then
 	mkdir ~/.vim
 fi
 cp -ir ./vim/colors ~/.vim
