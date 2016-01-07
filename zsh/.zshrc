@@ -3,6 +3,11 @@ export ZSH=~/.oh-my-zsh
 export EDITOR=vim
 export SHELL=/bin/zsh
 
+# nvm
+export NVM_DIR=~/.nvm
+. $(brew --prefix nvm)/nvm.sh
+# nvm use v0.12.7
+
 # Oh-my-zsh settings
 ZSH_THEME="bryant"
 COMPLETION_WAITING_DOTS="true"
@@ -26,8 +31,8 @@ alias ll='ls -lah'
 
 alias vms='VBoxManage list runningvms'
 
-alias vim='/usr/local/Cellar/vim/7.4.884/bin/vim'
-alias vimgit='vim $(git status --porcelain | sed -ne "s/^ M //p")'
+alias vimgitmod='vim $(git status --porcelain | sed -ne "s/^ *M //p")'
+alias vimgitconflict='vim $(git status --porcelain | sed -ne "s/^ *UU //p")'
 
 function zFind {
   find $(pwd) -name $1

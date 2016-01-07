@@ -178,19 +178,43 @@ nnoremap <Leader>s :source $HOME/.vimrc
 nnoremap <Leader>v :e $HOME/.vimrc
 nnoremap <Leader>b :CtrlPBuffer<CR>
 nnoremap <Leader>sudo :w !sudo tee %
+nnoremap <leader>m  :<c-u><c-r>='let @'. v:register .' = '. string(getreg(v:register))<cr><c-f><left>
 
 "" Abbreviations
 iab lorem Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
+"" Functions
+function! HtmlEntities(line1, line2, action)
+  let search = @/
+  let range = 'silent ' . a:line1 . ',' . a:line2
+  if a:action == 0
+    execute range . 'sno/&amp;/&/eg'
+    execute range . 'sno/&amp;/&/eg'
+    execute range . 'sno/&lt;/</eg'
+    execute range . 'sno/&gt;/>/eg'
+    execute range . 'sno/&quot;/"/eg'
+  else
+    execute range . 'sno/</&lt;/eg'
+    execute range . 'sno/"/&quot;/eg'
+    execute range . 'sno/>/&gt;/eg'
+    execute range . 'sno/&/&amp;/eg'
+  endif
+  nohl
+  let @/ = search
+endfunction
+command! -range -nargs=1 Escape call HtmlEntities(<line1>, <line2>, <args>)
+
 "" Plugins
-so /usr/local/Cellar/vim/7.4.884/share/vim/vim74/macros/matchit.vim
-so ~/.vim/closetag.vim
+:let g:closetag_html_style=1 
+so ~/.vim/scripts/matchit.vim
+so ~/.vim/scripts/closetag.vim
 execute pathogen#infect()
 
 "" CtrlP Settings
 let g:ctrlp_map = '<Leader>p'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_follow_symlinks = 1
+let g:ctrlp_open_multiple_files = '1r'
 
 "" Syntastic settings
 function! ToggleErrors()
@@ -205,6 +229,7 @@ nnoremap <silent> <Leader>e :<C-u>call ToggleErrors()<CR>
 nnoremap <silent> <Leader>t :SyntasticToggleMode<CR>
 nnoremap <silent> <C-p> :lnext<CR>zz
 nnoremap <silent> <C-o> :lprevious<CR>zz
+let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [],'passive_filetypes': [] }
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_wq = 0
