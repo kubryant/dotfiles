@@ -42,9 +42,9 @@
       "valid-typeof": 2,
 
       // best practices
-      "no-fallthrough": 2
-      "no-octal": 2
-      "no-redeclare": 2
+      "no-fallthrough": 2,
+      "no-octal": 2,
+      "no-redeclare": 2,
 
       // stylistic issues
       "no-mixed-spaces-and-tabs": 2
