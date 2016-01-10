@@ -33,6 +33,7 @@ git clone https://github.com/ctrlpvim/ctrlp.vim.git ~/.vim/bundle/ctrlp.vim
 
 # syntastic
 git clone https://github.com/scrooloose/syntastic.git ~/.vim/bundle/syntastic
+echo "syntastic was installed, but make sure to install an actual syntax checker such as jshint or pylint"
 
 # vim-airline
 git clone https://github.com/bling/vim-airline ~/.vim/bundle/vim-airline
