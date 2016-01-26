@@ -138,7 +138,7 @@ set wildignore+=*.a,*.o,*.class
 set wildignore+=*.bmp,*.gif,*.ico,*.jpg,*.png
 set wildignore+=.DS_STORE,.git,.hg,.svn
 set wildignore+=*/node_modules/*
-set wildignore+=*/target/*
+set wildignore+=*/target/*,*/build/*,*/coverage/*
 
 "" Set backspace
 set backspace=indent,eol,start
