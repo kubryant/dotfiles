@@ -74,6 +74,9 @@ else
 	echo "gem install sass"
 fi
 
+# enhanced javascript syntax
+git clone https://github.com/jelera/vim-javascript-syntax.git ~/.vim/bundle/vim-javascript-syntax
+
 vim -u NONE -c "Helptags" -c q
 
 echo "Everything is done"
