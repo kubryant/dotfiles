@@ -41,7 +41,7 @@ git clone https://github.com/xolox/vim-misc.git
 echo "use :let g:notes_directories = ['~/Documents/Notes'] to set a notes folder"
 
 # vim-airline
-git clone https://github.com/bling/vim-airline ~/.vim/bundle/vim-airline
+git clone https://github.com/vim-airline/vim-airline ~/.vim/bundle/vim-airline
 
 # ap/vim-css-color
 git clone https://github.com/ap/vim-css-color.git ~/.vim/bundle/vim-css-color
