@@ -52,6 +52,21 @@ git clone git://github.com/tpope/vim-fugitive.git ~/.vim/bundle/vim-fugitive
 # vim-surround
 git clone git://github.com/tpope/vim-surround.git ~/.vim/bundle/vim-surround
 
+# rainbow_parenthesis.vim
+git clone https://github.com/kien/rainbow_parentheses.vim.git ~/.vim/bundle/rainbow_parenthesis.vim
+
+# vim-commentary 
+git clone https://github.com/tpope/vim-commentary.git ~/.vim/bundle/vim-commentary
+
+# vim-repeat
+git clone https://github.com/tpope/vim-repeat.git ~/.vim/bundle/vim-repeat
+
+# vim-gutentags
+git clone https://github.com/ludovicchabant/vim-gutentags.git ~/.vim/bundle/vim-gutentags
+
+# vim-easyclip
+git clone https://github.com/svermeulen/vim-easyclip.git ~/.vim/bundle/vim-easyclip
+
 # beautify.vim
 git clone https://github.com/alpaca-tc/beautify.vim.git ~/.vim/bundle/beautify.vim
 if hash node 2>/dev/null; then

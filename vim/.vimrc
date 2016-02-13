@@ -1,5 +1,6 @@
 "" Set theme
-colorscheme bryantpeach
+colorscheme base16-default
+set background=dark
 syntax on
 set encoding=utf-8
 set t_Co=256
@@ -234,3 +235,16 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_loc_list_height=5
+
+"" Rainbow Parenthesis settings
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
+
+"" EasyClip settings
+let g:EasyClipUseSubstituteDefaults = 1
+set clipboard=unnamed
+
+"" Gutentags settings
+let g:gutentags_cache_dir='~/.vim/tags'
