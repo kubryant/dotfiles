@@ -37,8 +37,8 @@ git clone https://github.com/scrooloose/syntastic.git ~/.vim/bundle/syntastic
 echo "syntastic was installed, but make sure to install an actual syntax checker such as eslint or pylint"
 
 # vim-notes
-git clone https://github.com/xolox/vim-notes.git
-git clone https://github.com/xolox/vim-misc.git
+git clone https://github.com/xolox/vim-notes.git ~/.vim/bundle/vim-notes
+git clone https://github.com/xolox/vim-misc.git ~/.vim/bundle/vim-misc
 echo "use :let g:notes_directories = ['~/Documents/Notes'] to set a notes folder"
 
 # vim-airline
