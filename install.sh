@@ -33,7 +33,7 @@ git clone https://github.com/ctrlpvim/ctrlp.vim.git ~/.vim/bundle/ctrlp.vim
 
 # syntastic
 git clone https://github.com/scrooloose/syntastic.git ~/.vim/bundle/syntastic
-echo "syntastic was installed, but make sure to install an actual syntax checker such as jshint or pylint"
+echo "syntastic was installed, but make sure to install an actual syntax checker such as eslint or pylint"
 
 # vim-notes
 git clone https://github.com/xolox/vim-notes.git
@@ -66,6 +66,9 @@ git clone https://github.com/ludovicchabant/vim-gutentags.git ~/.vim/bundle/vim-
 
 # vim-easyclip
 git clone https://github.com/svermeulen/vim-easyclip.git ~/.vim/bundle/vim-easyclip
+
+# targets.vim
+git clone https://github.com/wellle/targets.vim.git ~/.vim/bundle/targets.vim
 
 # beautify.vim
 git clone https://github.com/alpaca-tc/beautify.vim.git ~/.vim/bundle/beautify.vim
