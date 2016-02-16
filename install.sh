@@ -70,6 +70,9 @@ git clone https://github.com/svermeulen/vim-easyclip.git ~/.vim/bundle/vim-easyc
 # targets.vim
 git clone https://github.com/wellle/targets.vim.git ~/.vim/bundle/targets.vim
 
+# ultisnips
+git clone https://github.com/SirVer/ultisnips.git ~/.vim/bundle/ultisnips
+
 # beautify.vim
 git clone https://github.com/alpaca-tc/beautify.vim.git ~/.vim/bundle/beautify.vim
 if hash node 2>/dev/null; then

@@ -145,12 +145,12 @@ set wildignore+=*/target/*,*/build/*,*/coverage/*
 set backspace=indent,eol,start
 
 "" Cycling through Windows quicker.
-"" map <C-M> <C-W>j<C-W>_
-"" map <C-K> <C-W>k<C-W>_
-"" map <A-Down>  <C-W><Down><C-W>_
-"" map <A-Up>    <C-W><Up><C-W>_
-"" map <A-Left>  <C-W><Left><C-W>|
-"" map <A-Right> <C-W><Right><C-W>|
+"" map <c-M> <c-W>j<c-W>_
+"" map <c-K> <c-W>k<c-W>_
+"" map <A-Down>  <c-W><Down><c-W>_
+"" map <A-Up>    <c-W><Up><c-W>_
+"" map <A-Left>  <c-W><Left><c-W>|
+"" map <A-Right> <c-W><Right><c-W>|
 
 "" HARD MODE
 nnoremap <Left> <Nop>
@@ -226,10 +226,10 @@ function! ToggleErrors()
     endif
 endfunction
 
-nnoremap <silent> <Leader>e :<C-u>call ToggleErrors()<CR>
+nnoremap <silent> <Leader>e :<c-u>call ToggleErrors()<CR>
 nnoremap <silent> <Leader>t :SyntasticToggleMode<CR>
-nnoremap <silent> <C-p> :lnext<CR>zz
-nnoremap <silent> <C-o> :lprevious<CR>zz
+nnoremap <silent> <c-p> :lnext<CR>zz
+nnoremap <silent> <c-o> :lprevious<CR>zz
 let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [], 'passive_filetypes': [] }
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
@@ -245,6 +245,11 @@ au Syntax * RainbowParenthesesLoadBraces
 "" EasyClip settings
 let g:EasyClipUseSubstituteDefaults = 1
 set clipboard=unnamed
+
+"" UltiSnips settings
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 "" Gutentags settings
 let g:gutentags_cache_dir='~/.vim/tags'
