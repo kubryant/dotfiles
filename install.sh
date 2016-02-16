@@ -19,6 +19,7 @@ if [ ! -d ~/.vim ]; then
 fi
 cp -ir ./vim/colors ~/.vim
 cp -ir ./vim/scripts ~/.vim
+cp -ir ./vim/UltiSnips ~/.vim
 
 echo "Installing vim plugins"
 # pathogen
