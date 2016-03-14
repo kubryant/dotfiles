@@ -79,7 +79,8 @@ set showmode
 set gcr=a:blinkon0
 
 "" Do not show any line of minimized windows
-"" set wmh=0
+set wmh=0
+set wmw=0
 
 "" After this many msecs do not imap.
 set timeoutlen=500
