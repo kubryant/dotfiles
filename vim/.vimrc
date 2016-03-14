@@ -261,6 +261,7 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 "" Gutentags settings
 let g:gutentags_cache_dir='~/.vim/tags'
+
 "" Rainbow Parenthesis
 let g:rbpt_colorpairs = [
     \ ['brown',       'RoyalBlue3'],
