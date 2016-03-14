@@ -1,0 +1,3 @@
+--color-filename=bright_cyan
+--ignore-dir=coverage
+--ignore-dir=build

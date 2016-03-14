@@ -9,6 +9,10 @@ set mouse=a
 "" No need to be compatible with vi and lose features.
 set nocompatible
 
+"" undo
+set undofile
+set undodir=~/.vim/undo
+
 "" Set Leader
 let mapleader=","
 
@@ -20,6 +24,7 @@ set smartcase
 
 "" Buffer settings
 set hidden
+set foldmethod=manual
 
 "" Set textwidth to 80, this implies word wrap.
 "" set textwidth=80
@@ -139,7 +144,7 @@ set wildignore+=*.a,*.o,*.class
 set wildignore+=*.bmp,*.gif,*.ico,*.jpg,*.png
 set wildignore+=.DS_STORE,.git,.hg,.svn
 set wildignore+=*/node_modules/*
-set wildignore+=*/target/*,*/build/*,*/coverage/*
+set wildignore+=*/target/*,*/build/*,*/coverage/*,*/dist/*
 
 "" Set backspace
 set backspace=indent,eol,start
@@ -171,6 +176,9 @@ nnoremap <silent> <Esc><Esc> :nohlsearch<CR>
 nnoremap ! :!
 nnoremap <tab> :bn<CR>
 nnoremap <s-tab> :bp<CR>
+nnoremap <space> :tabn<CR>
+nnoremap <s-space> :tabp<CR>
+nnoremap gm m
 nmap <silent> n /<CR>
 nmap <silent> N ?<CR>
 
@@ -253,6 +261,29 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 "" Gutentags settings
 let g:gutentags_cache_dir='~/.vim/tags'
+"" Rainbow Parenthesis
+let g:rbpt_colorpairs = [
+    \ ['brown',       'RoyalBlue3'],
+    \ ['Darkblue',    'SeaGreen3'],
+    \ ['darkgray',    'DarkOrchid3'],
+    \ ['darkgreen',   'firebrick3'],
+    \ ['darkcyan',    'RoyalBlue3'],
+    \ ['darkred',     'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['brown',       'firebrick3'],
+    \ ['gray',        'RoyalBlue3'],
+    \ ['white',       'SeaGreen3'],
+    \ ['darkmagenta', 'DarkOrchid3'],
+    \ ['Darkblue',    'firebrick3'],
+    \ ['darkgreen',   'RoyalBlue3'],
+    \ ['darkcyan',    'SeaGreen3'],
+    \ ['darkred',     'DarkOrchid3'],
+    \ ['red',         'firebrick3'],
+    \ ]
 
 "" Javascript settings
-nnoremap <Leader>c diwiconsole.log('<ESC>pa = ', <ESC>pa);<ESC>
+nnoremap <Leader>c "cdiWaconsole.log('<ESC>"cpa = ', <ESC>"cpa);<ESC>
+nnoremap <Leader>z zfa}
+
+"" delete whitespaces
+autocmd BufWritePre *.py,*.js,*.hs,*.html,*.css,*.scss :%s/\s\+$//e
