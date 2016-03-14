@@ -33,6 +33,7 @@ alias vms='VBoxManage list runningvms'
 
 alias vimgitmod='vim $(git status --porcelain | sed -ne "s/^ *M //p")'
 alias vimgitconflict='vim $(git status --porcelain | sed -ne "s/^ *UU //p")'
+alias ag='ag --color-path="1;36"'
 
 function zFind {
   find $(pwd) -name $1

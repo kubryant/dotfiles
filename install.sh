@@ -26,8 +26,8 @@ echo "Installing vim plugins"
 mkdir -p ~/.vim/autoload ~/.vim/bundle && \
 curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
 
-# ack.vim
-git clone https://github.com/mileszs/ack.vim.git ~/.vim/bundle/ack.vim
+# ag.vim
+git clone https://github.com/rking/ag.vim.git ~/.vim/bundle/ag.vim
 
 # ctrlp.vim
 git clone https://github.com/ctrlpvim/ctrlp.vim.git ~/.vim/bundle/ctrlp.vim

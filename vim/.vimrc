@@ -171,7 +171,7 @@ inoremap <Down> <Nop>
 inoremap <PageUp> <Nop>
 inoremap <PageDown> <Nop>
 
-"" Buffer maps
+"" Maps
 nnoremap <silent> <Esc><Esc> :nohlsearch<CR>
 nnoremap ! :!
 nnoremap <tab> :bn<CR>
@@ -281,6 +281,9 @@ let g:rbpt_colorpairs = [
     \ ['darkred',     'DarkOrchid3'],
     \ ['red',         'firebrick3'],
     \ ]
+
+"" ag Settings
+let g:ag_working_path_mode="r"
 
 "" Javascript settings
 nnoremap <Leader>c "cdiWaconsole.log('<ESC>"cpa = ', <ESC>"cpa);<ESC>
