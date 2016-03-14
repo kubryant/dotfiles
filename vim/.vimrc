@@ -9,7 +9,7 @@ set mouse=a
 "" No need to be compatible with vi and lose features.
 set nocompatible
 
-"" undo
+"" Undo
 set undofile
 set undodir=~/.vim/undo
 
@@ -258,5 +258,5 @@ let g:ag_working_path_mode="r"
 nnoremap <Leader>c "cdiWaconsole.log('<ESC>"cpa = ', <ESC>"cpa);<ESC>
 nnoremap <Leader>z zfa}
 
-"" delete whitespaces
+"" Delete Trailing Whitespaces
 autocmd BufWritePre *.py,*.js,*.hs,*.html,*.css,*.scss :%s/\s\+$//e
