@@ -108,36 +108,6 @@ function! ToggleBetweenHeaderAndSourceFile()
 endfunction
 map <silent> <F4> :call ToggleBetweenHeaderAndSourceFile()<CR>
 
-"" Cycle through completions with TAB (and SHIFT-TAB cycles backwards).
-"" function! InsertTabWrapper(direction)
-""     let col = col('.') - 1
-""     if !col || getline('.')[col - 1] !~ '\k'
-""         return "\<tab>"
-""     elseif "backward" == a:direction
-""         return "\<c-p>"
-""     else
-""         return "\<c-n>"
-""     endif
-"" endfunction
-"" inoremap <tab> <c-r>=InsertTabWrapper ("forward")<cr>
-"" inoremap <s-tab> <c-r>=InsertTabWrapper ("backward")<cr>
-
-"" Latex Suite 1.5 wants it
-"" REQUIRED. This makes vim invoke latex-suite when you open a tex file.
-
-"" IMPORTANT: grep will sometimes skip displaying the file name if you
-"" search in a single file. This will confuse latex-suite. Set your grep
-"" program to alway generate a file-name.
-set grepprg=grep\ -nH\ $*
-
-"" no placeholders please
-let g:Imap_UsePlaceHolders = 0
-
-"" no " conversion please
-let g:Tex_SmartKeyQuote = 0
-
-"" don't use Makefile if one is there
-let g:Tex_UseMakefile = 0
 
 "" wildignore
 set wildignore+=*.a,*.o,*.class
