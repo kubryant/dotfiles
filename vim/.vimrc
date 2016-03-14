@@ -108,7 +108,6 @@ function! ToggleBetweenHeaderAndSourceFile()
 endfunction
 map <silent> <F4> :call ToggleBetweenHeaderAndSourceFile()<CR>
 
-
 "" wildignore
 set wildignore+=*.a,*.o,*.class
 set wildignore+=*.bmp,*.gif,*.ico,*.jpg,*.png
