@@ -227,7 +227,6 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 let g:gutentags_cache_dir='~/.vim/tags'
 
 "" Rainbow Parenthesis
-"" Rainbow Parenthesis settings
 au VimEnter * RainbowParenthesesToggle
 au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
