@@ -1,6 +1,5 @@
 # This script will install oh-my-zsh,
-# copy .zshrc, .vimrc, and themes,
-# and then install all vim plugins
+# copy .zshrc, .vimrc, and themes
 
 if [ -d ~/.oh-my-zsh ]; then
 	echo "Oh-my-zsh already installed. Skipping to the next step!"
@@ -17,65 +16,24 @@ cp -i ./vim/.vimrc ~
 if [ ! -d ~/.vim ]; then
 	mkdir ~/.vim
 fi
+cp -ir ./vim/bundle ~/.vim
 cp -ir ./vim/colors ~/.vim
 cp -ir ./vim/scripts ~/.vim
 cp -ir ./vim/UltiSnips ~/.vim
 
-echo "Installing vim plugins"
+echo "Installing Pathogen"
 # pathogen
 mkdir -p ~/.vim/autoload ~/.vim/bundle && \
 curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
 
-# ag.vim
-git clone https://github.com/rking/ag.vim.git ~/.vim/bundle/ag.vim
+if hash brew 2>/dev/null; then
+    brew install the_silver_searcher
+else
+	echo "brew is not installed"
+	echo "install brew and run these commands manually"
+	echo "brew install the_silver_searcher"
+fi
 
-# ctrlp.vim
-git clone https://github.com/ctrlpvim/ctrlp.vim.git ~/.vim/bundle/ctrlp.vim
-
-# syntastic
-git clone https://github.com/scrooloose/syntastic.git ~/.vim/bundle/syntastic
-echo "syntastic was installed, but make sure to install an actual syntax checker such as eslint or pylint"
-
-# vim-notes
-git clone https://github.com/xolox/vim-notes.git ~/.vim/bundle/vim-notes
-git clone https://github.com/xolox/vim-misc.git ~/.vim/bundle/vim-misc
-echo "use :let g:notes_directories = ['~/Documents/Notes'] to set a notes folder"
-
-# vim-airline
-git clone https://github.com/vim-airline/vim-airline ~/.vim/bundle/vim-airline
-
-# ap/vim-css-color
-git clone https://github.com/ap/vim-css-color.git ~/.vim/bundle/vim-css-color
-
-# vim-fugitive
-git clone git://github.com/tpope/vim-fugitive.git ~/.vim/bundle/vim-fugitive
-
-# vim-surround
-git clone git://github.com/tpope/vim-surround.git ~/.vim/bundle/vim-surround
-
-# rainbow_parenthesis.vim
-git clone https://github.com/kien/rainbow_parentheses.vim.git ~/.vim/bundle/rainbow_parenthesis.vim
-
-# vim-commentary 
-git clone https://github.com/tpope/vim-commentary.git ~/.vim/bundle/vim-commentary
-
-# vim-repeat
-git clone https://github.com/tpope/vim-repeat.git ~/.vim/bundle/vim-repeat
-
-# vim-gutentags
-git clone https://github.com/ludovicchabant/vim-gutentags.git ~/.vim/bundle/vim-gutentags
-
-# vim-easyclip
-git clone https://github.com/svermeulen/vim-easyclip.git ~/.vim/bundle/vim-easyclip
-
-# targets.vim
-git clone https://github.com/wellle/targets.vim.git ~/.vim/bundle/targets.vim
-
-# ultisnips
-git clone https://github.com/SirVer/ultisnips.git ~/.vim/bundle/ultisnips
-
-# beautify.vim
-git clone https://github.com/alpaca-tc/beautify.vim.git ~/.vim/bundle/beautify.vim
 if hash node 2>/dev/null; then
 	npm install -g js-beautify
 	npm install -g jq
@@ -95,9 +53,6 @@ else
 	echo "gem install html2haml --pre"
 	echo "gem install sass"
 fi
-
-# enhanced javascript syntax
-git clone https://github.com/jelera/vim-javascript-syntax.git ~/.vim/bundle/vim-javascript-syntax
 
 vim -u NONE -c "Helptags" -c q
 
