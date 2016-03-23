@@ -214,12 +214,6 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_loc_list_height=5
 
-"" Rainbow Parenthesis settings
-au VimEnter * RainbowParenthesesToggle
-au Syntax * RainbowParenthesesLoadRound
-au Syntax * RainbowParenthesesLoadSquare
-au Syntax * RainbowParenthesesLoadBraces
-
 "" EasyClip settings
 let g:EasyClipUseSubstituteDefaults = 1
 set clipboard=unnamed
@@ -233,6 +227,12 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 let g:gutentags_cache_dir='~/.vim/tags'
 
 "" Rainbow Parenthesis
+"" Rainbow Parenthesis settings
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
+
 let g:rbpt_colorpairs = [
     \ ['brown',       'RoyalBlue3'],
     \ ['Darkblue',    'SeaGreen3'],
