@@ -31,10 +31,15 @@ alias ll='ls -lah'
 
 alias vms='VBoxManage list runningvms'
 
-alias vimgitmod='vim $(git status --porcelain | sed -ne "s/^ *M //p")'
-alias vimgitconflict='vim $(git status --porcelain | sed -ne "s/^ *UU //p")'
+alias vimgm='vim $(git status --short | sed -ne "s/^ *M //p")'
+alias vimgc='vim $(git status --short | sed -ne "s/^ *UU //p")'
 alias ag='ag --color-path="1;36"'
 
+alias gbd='gb -D $(gb) 2>/dev/null'
+alias gstl='git stash list | cat'
+alias gsts='git stash save'
+alias gdf='git diff master --name-status | sed -ne "s/^[A|M].//p"'
+alias greset='grhh && gclean; gcb hello && gbd; gcm && gl && gbd'
 function zFind {
   find $(pwd) -name $1
 }

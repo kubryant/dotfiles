@@ -59,9 +59,6 @@ au BufNewFile,BufReadPost Makefile se noexpandtab
 "" Show matching braces.
 set showmatch
 
-"" Choose the right syntax highlightning per TAB-completion :-)
-map <F2> :source $VIM/syntax/
-
 "" Keep the horizontal cursor position when moving vertically.
 set nostartofline
 
@@ -85,8 +82,8 @@ set wmw=0
 "" After this many msecs do not imap.
 set timeoutlen=500
 
-"" Set update time to 1 second (default is 4 seconds), convenient for taglist.vim.
-set updatetime=500
+"" Set update time to 0.5 second (default is 4 seconds), convenient for taglist.vim.
+set updatetime=250
 
 "" Toggle between .h and .cpp with F4.
 function! ToggleBetweenHeaderAndSourceFile()
@@ -120,12 +117,10 @@ set wildignore+=*/target/*,*/build/*,*/coverage/*,*/dist/*
 set backspace=indent,eol,start
 
 "" Cycling through Windows quicker.
-"" map <c-M> <c-W>j<c-W>_
-"" map <c-K> <c-W>k<c-W>_
-"" map <A-Down>  <c-W><Down><c-W>_
-"" map <A-Up>    <c-W><Up><c-W>_
-"" map <A-Left>  <c-W><Left><c-W>|
-"" map <A-Right> <c-W><Right><c-W>|
+nnoremap <c-h> <c-w>h
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-l> <c-w>l
 
 "" HARD MODE
 nnoremap <Left> <Nop>
@@ -149,8 +144,8 @@ nnoremap <s-tab> :bp<CR>
 nnoremap <space> :tabn<CR>
 nnoremap <s-space> :tabp<CR>
 nnoremap gm m
-nmap <silent> n /<CR>
-nmap <silent> N ?<CR>
+nmap <silent> n /<CR>zz
+nmap <silent> N ?<CR>zz
 
 "" Leader maps
 nnoremap <Leader>s :source $HOME/.vimrc
@@ -254,9 +249,13 @@ let g:rbpt_colorpairs = [
 "" ag Settings
 let g:ag_working_path_mode="r"
 
+"" TagBar settings
+nmap <F1> :TagbarToggle<CR>
+let g:tagbar_width = 60
+
 "" Javascript settings
 nnoremap <Leader>c "cdiWaconsole.log('<ESC>"cpa = ', <ESC>"cpa);<ESC>
-nnoremap <Leader>z zfa}
+nnoremap <Leader>z $zfa}
 
 "" Delete Trailing Whitespaces
 autocmd BufWritePre *.py,*.js,*.hs,*.html,*.css,*.scss :%s/\s\+$//e

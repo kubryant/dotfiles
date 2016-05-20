@@ -9,6 +9,7 @@ fi
 
 echo "Copying .zshrc and oh-my-zsh theme to ~"
 cp -i ./zsh/.zshrc ~
+cp -i ./zsh/.tmux.conf ~
 cp -ir ./zsh/themes/* ~/.oh-my-zsh/themes 
 
 echo "Copying .vimrc and .vim to ~"
