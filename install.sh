@@ -7,6 +7,9 @@ else
 	sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 fi
 
+brew install tmux
+brew install reattach-to-user-namespace
+
 echo "Copying .zshrc and oh-my-zsh theme to ~"
 cp -i ./zsh/.zshrc ~
 cp -i ./zsh/.tmux.conf ~
