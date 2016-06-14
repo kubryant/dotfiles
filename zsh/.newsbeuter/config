@@ -3,6 +3,7 @@ auto-reload yes
 show-keymap-hint no
 swap-title-and-hints no
 browser "'/Applications/Google\ Chrome\ Canary.app/Contents/MacOS/Google\ Chrome\ Canary'"
+bookmark-cmd "py-pouch.py"
 
 # mappings
 bind-key j next
