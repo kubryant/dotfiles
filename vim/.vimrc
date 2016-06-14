@@ -106,13 +106,6 @@ function! ToggleBetweenHeaderAndSourceFile()
 endfunction
 map <silent> <F4> :call ToggleBetweenHeaderAndSourceFile()<CR>
 
-"" wildignore
-set wildignore+=*.a,*.o,*.class
-set wildignore+=*.bmp,*.gif,*.ico,*.jpg,*.png
-set wildignore+=.DS_STORE,.git,.hg,.svn
-set wildignore+=*/node_modules/*
-set wildignore+=*/target/*,*/build/*,*/coverage/*,*/dist/*
-
 "" Set backspace
 set backspace=indent,eol,start
 
@@ -187,6 +180,7 @@ execute pathogen#infect()
 "" CtrlP Settings
 let g:ctrlp_map = '<Leader>p'
 let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_user_command = 'ag %s -U -l --nocolor -g ""'
 let g:ctrlp_follow_symlinks = 1
 let g:ctrlp_open_multiple_files = '1r'
 

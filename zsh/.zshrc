@@ -34,13 +34,15 @@ alias vms='VBoxManage list runningvms'
 alias vimgm='vim $(git status --short | sed -ne "s/^ *M //p")'
 alias vimgc='vim $(git status --short | sed -ne "s/^ *UU //p")'
 alias ag='ag --color-path="1;36"'
+alias loc='find . -name "*.js" | xargs wc -l'
 
 alias gbd='gb -D $(gb) 2>/dev/null'
 alias gstl='git stash list | cat'
 alias gsts='git stash save'
 alias gdf='git diff master --name-status | sed -ne "s/^[A|M].//p"'
+alias gpo='git push --set-upstream origin $(git symbolic-ref HEAD 2> /dev/null | sed -ne "s/^refs\/heads\///p")'
 alias greset='grhh && gclean; gcb hello && gbd; gcm && gl && gbd'
-function zFind {
+function f {
   find $(pwd) -name $1
 }
 

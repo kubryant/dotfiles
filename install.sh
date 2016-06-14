@@ -9,6 +9,10 @@ fi
 
 brew install tmux
 brew install reattach-to-user-namespace
+brew install newsbeuter
+# install pip
+# pip install requests
+# install https://github.com/lepinkainen/py-pouch
 
 echo "Copying .zshrc and oh-my-zsh theme to ~"
 cp -i ./zsh/.zshrc ~
