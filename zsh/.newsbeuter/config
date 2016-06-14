@@ -16,6 +16,9 @@ bind-key J next article
 bind-key K prev article
 bind-key g home
 bind-key G end
+bind-key ^F pagedown
+bind-key ^B pageup
+bind-key p bookmark
 
 # colors
 color background white default
