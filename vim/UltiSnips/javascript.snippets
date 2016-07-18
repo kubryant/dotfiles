@@ -2,8 +2,16 @@ snippet us
 'use strict';
 endsnippet
 
+snippet cl:
+console.log('$1:', $1);
+endsnippet
+
 snippet cl
 console.log($0);
+endsnippet
+
+snippet clx
+console.log('$1$1$1$1$1$1$1$1$1$1$1$1$1$1$1$1$1$1$1$1$1$1$1$1$1$1$1$1$1$1$1$1$1$1$1$1$1$1$1$1$1$1$1$1$1$1$1$1$1$1$1$1$1$1$1$1');
 endsnippet
 
 snippet cd
@@ -11,7 +19,7 @@ console.dir($0);
 endsnippet
 
 snippet clj
-console.log(JSON.stringify($0));
+console.log(JSON.stringify($0, null, 2));
 endsnippet
 
 snippet jsonp
@@ -23,6 +31,20 @@ JSON.stringify(${0:object});
 endsnippet
 
 snippet cl=
+console.log('========================================================');
+endsnippet
+
+snippet cl-
+console.log('--------------------------------------------------------');
+endsnippet
+
+snippet cln
+console.log('\n\n\n\n\n\n\n\n\n\n');
+endsnippet
+
+snippet cll
+console.log('========================================================');
+console.log('$1:', $1);
 console.log('========================================================');
 endsnippet
 
