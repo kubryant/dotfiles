@@ -41,9 +41,9 @@ alias gstl='git stash list | cat'
 alias gsts='git stash save'
 alias gdf='git diff master --name-status | sed -ne "s/^[A|M].//p"'
 alias gpo='git push --set-upstream origin $(git symbolic-ref HEAD 2> /dev/null | sed -ne "s/^refs\/heads\///p")'
-alias greset='grhh && gclean; gcb hello && gbd; gcm && gl && gbd'
+alias greset='grhh && gclean; gcb hello && gbd; gcm && gl && gbd && gfa'
 function f {
-  find $(pwd) -name $1
+  find $(pwd) -name $1 2>/dev/null
 }
 
 # start

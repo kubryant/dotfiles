@@ -252,4 +252,5 @@ nnoremap <Leader>c "cdiWaconsole.log('<ESC>"cpa = ', <ESC>"cpa);<ESC>
 nnoremap <Leader>z $zfa}
 
 "" Delete Trailing Whitespaces
-autocmd BufWritePre *.py,*.js,*.hs,*.html,*.css,*.scss :%s/\s\+$//e
+au BufWritePre *.js,*.html,*.css,*.scss :%s/\s\+$//e
+
