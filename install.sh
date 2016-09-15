@@ -29,6 +29,9 @@ cp -ir ./vim/colors ~/.vim
 cp -ir ./vim/scripts ~/.vim
 cp -ir ./vim/UltiSnips ~/.vim
 
+echo "Installing base16 Themes"
+git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
+
 echo "Installing Pathogen"
 # pathogen
 mkdir -p ~/.vim/autoload ~/.vim/bundle && \

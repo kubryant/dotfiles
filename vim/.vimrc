@@ -1,6 +1,8 @@
 "" Set theme
-colorscheme base16-default
-set background=dark
+if filereadable(expand("~/.vimrc_background"))
+  let base16colorspace=256
+  source ~/.vimrc_background
+endif
 syntax on
 set encoding=utf-8
 set t_Co=256
@@ -241,7 +243,7 @@ let g:rbpt_colorpairs = [
     \ ]
 
 "" ag Settings
-let g:ag_working_path_mode="r"
+let g:ackprg = 'ag --vimgrep'
 
 "" TagBar settings
 nmap <F1> :TagbarToggle<CR>

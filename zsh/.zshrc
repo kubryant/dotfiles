@@ -7,6 +7,10 @@ export SHELL=/bin/zsh
 export NVM_DIR=~/.nvm
 . $(brew --prefix nvm)/nvm.sh
 # nvm use v0.12.7
+# Base16 Theme
+BASE16_SHELL=$HOME/.config/base16-shell/
+[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
+base16_oceanicnext
 
 # Oh-my-zsh settings
 ZSH_THEME="bryant"
