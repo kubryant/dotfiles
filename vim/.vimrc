@@ -184,6 +184,8 @@ so ~/.vim/scripts/matchit.vim
 so ~/.vim/scripts/closetag.vim
 
 "" fzf
+command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>).'| tr -d "\017"', 1, <bang>0)
+nnoremap <Leader>f :Find 
 nnoremap <Leader>p :Files<CR>
 nnoremap <Leader>l :Lines<CR>
 

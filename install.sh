@@ -34,19 +34,22 @@ mkdir -p ~/.vim/autoload ~/.vim/bundle && \
 curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
 
 if hash brew 2>/dev/null; then
-    brew install the_silver_searcher
 	brew install fzf
 	brew install tmux
 	brew install reattach-to-user-namespace
 	brew install newsbeuter
+
+	brew tap burntsushi/ripgrep https://github.com/BurntSushi/ripgrep.git
+	brew install burntsushi/ripgrep/ripgrep-bin
 else
 	echo "brew is not installed"
 	echo "install brew and run these commands manually"
-	echo "brew install the_silver_searcher"
 	echo "brew install fzf"
 	echo "brew install tmux"
 	echo "brew install reattach-to-user-namespace"
 	echo "brew install newsbeuter"
+	echo "brew tap burntsushi/ripgrep https://github.com/BurntSushi/ripgrep.git"
+	echo "brew install burntsushi/ripgrep/ripgrep-bin"
 fi
 
 if hash fzf 2>/dev/null; then
