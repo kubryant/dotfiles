@@ -10,6 +10,10 @@ snippet cl
 console.log($0);
 endsnippet
 
+snippet cl'
+console.log('$0');
+endsnippet
+
 snippet clx
 console.log('$1$1$1$1$1$1$1$1$1$1$1$1$1$1$1$1$1$1$1$1$1$1$1$1$1$1$1$1$1$1$1$1$1$1$1$1$1$1$1$1$1$1$1$1$1$1$1$1$1$1$1$1$1$1$1$1');
 endsnippet
@@ -63,4 +67,27 @@ endsnippet
 snippet time
 console.time('$1');
 console.timeEnd('$1');
+endsnippet
+
+snippet it
+it('$0', function (done) {
+	done('hello');
+});
+endsnippet
+
+snippet de
+describe('$0', function() {
+});
+endsnippet
+
+snippet sand
+sandbox.stub($1, '$2', function ($0) {
+	return Promise.resolve();
+});
+endsnippet
+
+snippet cll'
+console.log('========================================================');
+console.log('$0');
+console.log('========================================================');
 endsnippet
