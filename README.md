@@ -1,5 +1,5 @@
 # dotfiles
-Configurations for Arch and Mac
+donfigurations for mac
 
 ## installation
-Run install.sh to install settings for zsh and vim
+uun install.sh to install settings for zsh and vim
