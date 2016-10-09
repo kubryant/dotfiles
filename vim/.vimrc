@@ -1,8 +1,13 @@
+"" load plugins
+execute pathogen#infect()
+set rtp+=/usr/local/opt/fzf
+
 "" Set theme
 if filereadable(expand("~/.vimrc_background"))
   let base16colorspace=256
   source ~/.vimrc_background
 endif
+
 syntax on
 set encoding=utf-8
 set t_Co=256
@@ -30,7 +35,7 @@ set foldmethod=manual
 
 "" Set textwidth to 80, this implies word wrap.
 "" set textwidth=80
-set synmaxcol=250
+set synmaxcol=500
 
 "" Set column 80 to red
 "" highlight OverLength ctermbg=8 ctermfg=red
@@ -43,6 +48,7 @@ set relativenumber
 "" Tabs settings
 filetype plugin indent on
 set autoindent
+
 "" 4 space hard tabs
 set tabstop=4
 set softtabstop=4
@@ -137,7 +143,7 @@ nnoremap ! :!
 nnoremap <tab> :bn<CR>
 nnoremap <s-tab> :bp<CR>
 nnoremap <space> :tabn<CR>
-nnoremap <s-space> :tabp<CR>
+nnoremap <backspace> :tabp<CR>
 nnoremap gm m
 nmap <silent> n /<CR>zz
 nmap <silent> N ?<CR>zz
@@ -145,7 +151,6 @@ nmap <silent> N ?<CR>zz
 "" Leader maps
 nnoremap <Leader>s :source $HOME/.vimrc
 nnoremap <Leader>v :e $HOME/.vimrc
-nnoremap <Leader>b :CtrlPBuffer<CR>
 nnoremap <Leader>sudo :w !sudo tee %
 nnoremap <Leader>m  :<c-u><c-r>='let @'. v:register .' = '. string(getreg(v:register))<cr><c-f><left>
 
@@ -177,36 +182,23 @@ command! -range -nargs=1 Escape call HtmlEntities(<line1>, <line2>, <args>)
 let g:closetag_html_style=1 
 so ~/.vim/scripts/matchit.vim
 so ~/.vim/scripts/closetag.vim
-execute pathogen#infect()
 
-"" CtrlP Settings
-let g:ctrlp_map = '<Leader>p'
-let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_user_command = 'ag %s -U -l --nocolor -g ""'
-let g:ctrlp_follow_symlinks = 1
-let g:ctrlp_open_multiple_files = '1r'
+"" fzf
+nnoremap <Leader>p :Files<CR>
+nnoremap <Leader>l :Lines<CR>
 
-"" Syntastic settings
-function! ToggleErrors()
-    let old_last_winnr = winnr('$')
-    lclose
-    if old_last_winnr == winnr('$')
-        Errors
-    endif
-endfunction
-
-nnoremap <silent> <Leader>e :<c-u>call ToggleErrors()<CR>
+"" Syntastic
 nnoremap <silent> <Leader>t :SyntasticToggleMode<CR>
 nnoremap <silent> <c-p> :lnext<CR>zz
 nnoremap <silent> <c-o> :lprevious<CR>zz
-let g:syntastic_mode_map = { 'mode': 'passive', 'active_filetypes': [], 'passive_filetypes': [] }
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_wq = 0
+let g:syntastic_mode_map={ 'mode': 'passive', 'active_filetypes': [], 'passive_filetypes': [] }
+let g:syntastic_always_populate_loc_list=1
+let g:syntastic_auto_loc_list=1
+let g:syntastic_check_on_wq=0
 let g:syntastic_loc_list_height=5
 
 "" EasyClip settings
-let g:EasyClipUseSubstituteDefaults = 1
+let g:EasyClipUseSubstituteDefaults=1
 set clipboard=unnamed
 
 "" UltiSnips settings
@@ -223,7 +215,7 @@ au Syntax * RainbowParenthesesLoadRound
 au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
 
-let g:rbpt_colorpairs = [
+let g:rbpt_colorpairs=[
     \ ['brown',       'RoyalBlue3'],
     \ ['Darkblue',    'SeaGreen3'],
     \ ['darkgray',    'DarkOrchid3'],
@@ -242,12 +234,9 @@ let g:rbpt_colorpairs = [
     \ ['red',         'firebrick3'],
     \ ]
 
-"" ag Settings
-let g:ackprg = 'ag --vimgrep'
-
 "" TagBar settings
 nmap <F1> :TagbarToggle<CR>
-let g:tagbar_width = 60
+let g:tagbar_width=60
 
 "" Javascript settings
 nnoremap <Leader>c "cdiWaconsole.log('<ESC>"cpa = ', <ESC>"cpa);<ESC>
@@ -256,3 +245,7 @@ nnoremap <Leader>z $zfa}
 "" Delete Trailing Whitespaces
 au BufWritePre *.js,*.html,*.css,*.scss :%s/\s\+$//e
 
+"" run commands
+au FileType javascript :map <Leader>r :!node %<CR>
+au FileType go :map <Leader>r :!go run %<CR>
+au FileType python :map <Leader>r :!python %<CR>
