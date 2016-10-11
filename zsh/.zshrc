@@ -6,7 +6,6 @@ export SHELL=/bin/zsh
 # nvm
 export NVM_DIR=~/.nvm
 . $(brew --prefix nvm)/nvm.sh
-# nvm use v0.12.7
 
 # Base16 Theme
 BASE16_SHELL=$HOME/.config/base16-shell/
@@ -53,7 +52,6 @@ alias vms='VBoxManage list runningvms'
 
 alias vimgm='vim $(git status --short | sed -ne "s/^ *M //p")'
 alias vimgc='vim $(git status --short | sed -ne "s/^ *UU //p")'
-alias ag='ag --color-path="1;36"'
 alias loc='find . -name "*.js" | xargs wc -l'
 
 alias gbd='gb -D $(gb) 2>/dev/null'

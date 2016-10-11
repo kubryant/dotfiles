@@ -38,8 +38,8 @@ set foldmethod=manual
 set synmaxcol=500
 
 "" Set column 80 to red
-"" highlight OverLength ctermbg=8 ctermfg=red
-"" match OverLength /\%81v.\+/
+highlight OverLength ctermbg=8 ctermfg=red
+match OverLength /\%121v.\+/
 
 "" Show line numbers.
 set nu
@@ -189,15 +189,24 @@ nnoremap <Leader>f :Find
 nnoremap <Leader>p :Files<CR>
 nnoremap <Leader>l :Lines<CR>
 
-"" Syntastic
-nnoremap <silent> <Leader>t :SyntasticToggleMode<CR>
+"" Neomake
+autocmd! BufWritePost * Neomake
 nnoremap <silent> <c-p> :lnext<CR>zz
 nnoremap <silent> <c-o> :lprevious<CR>zz
-let g:syntastic_mode_map={ 'mode': 'passive', 'active_filetypes': [], 'passive_filetypes': [] }
-let g:syntastic_always_populate_loc_list=1
-let g:syntastic_auto_loc_list=1
-let g:syntastic_check_on_wq=0
-let g:syntastic_loc_list_height=5
+let g:neomake_open_list=2
+let g:neomake_list_height=10
+" let g:neomake_javascript_enabled_makers=['eslint']
+" let g:neomake_javascript_eslint_maker= {
+" 	\ 'args': ['-f', 'compact'],
+" 	\ 'errorformat': '%E%f: line %l\, col %c\, Error - %m,' .
+" 	\ '%W%f: line %l\, col %c\, Warning - %m'
+" \ }
+let g:neomake_warning_sign = {
+	\ 'text': 'W>'
+\ }
+let g:neomake_error_sign = {
+	\ 'text': 'E>'
+\ }
 
 "" EasyClip settings
 let g:EasyClipUseSubstituteDefaults=1
