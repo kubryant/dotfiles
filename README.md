@@ -1,5 +1,5 @@
 # dotfiles
-donfigurations for mac
+configurations for mac/linux
 
 ## installation
-uun install.sh to install settings for zsh and vim
+run install.sh to install settings for zsh and vim
