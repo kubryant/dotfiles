@@ -52,8 +52,9 @@ alias vms='VBoxManage list runningvms'
 
 alias vimgm='vim $(git status --short | sed -ne "s/^ *M //p")'
 alias vimgc='vim $(git status --short | sed -ne "s/^ *UU //p")'
+alias vimrc='vim ~/.vimrc'
 alias loc='find . -name "*.js" | xargs wc -l'
-
+alias rg='rg --ignore-case'
 alias gbd='gb -D $(gb) 2>/dev/null'
 alias gstl='git stash list | cat'
 alias gsts='git stash save'

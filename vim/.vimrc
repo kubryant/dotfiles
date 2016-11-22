@@ -2,7 +2,7 @@
 execute pathogen#infect()
 set rtp+=/usr/local/opt/fzf
 
-"" Set theme
+"" set theme
 if filereadable(expand("~/.vimrc_background"))
   let base16colorspace=256
   source ~/.vimrc_background
@@ -13,39 +13,42 @@ set encoding=utf-8
 set t_Co=256
 set mouse=a
 
-"" No need to be compatible with vi and lose features.
+"" save automatically when calling make
+set autowrite
+
+"" no need to be compatible with vi and lose features.
 set nocompatible
 
-"" Undo
+"" undo
 set undofile
 set undodir=~/.vim/undo
 
-"" Set Leader
+"" set leader
 let mapleader=","
 
-"" Search settings
+"" search settings
 set hlsearch
 set incsearch
 set ignorecase
 set smartcase
 
-"" Buffer settings
+"" buffer settings
 set hidden
 set foldmethod=manual
 
-"" Set textwidth to 80, this implies word wrap.
+"" set textwidth to 80, this implies word wrap.
 "" set textwidth=80
 set synmaxcol=500
 
-"" Set column 80 to red
-highlight OverLength ctermbg=8 ctermfg=red
-match OverLength /\%121v.\+/
+"" set column 80 to red
+" highlight OverLength ctermbg=8 ctermfg=red
+" match OverLength /\%121v.\+/
 
-"" Show line numbers.
+"" show line numbers.
 set nu
 set relativenumber
 
-"" Tabs settings
+"" tabs settings
 filetype plugin indent on
 set autoindent
 
@@ -56,68 +59,47 @@ set shiftwidth=4
 set noexpandtab
 
 "" 2 space tabs
-"" set softtabstop=2
-"" set tabstop=2
-"" set shiftwidth=2
-"" set expandtab
+" set softtabstop=2
+" set tabstop=2
+" set shiftwidth=2
+" set expandtab
 
-"" But TABs are needed in Makefiles
-au BufNewFile,BufReadPost Makefile se noexpandtab
-
-"" Show matching braces.
+"" show matching braces
 set showmatch
 
-"" Keep the horizontal cursor position when moving vertically.
+"" keep the horizontal cursor position when moving vertically
 set nostartofline
 
-"" Do not break long lines.
+"" do not break long lines
 set nowrap
 set listchars=eol:$,extends:>
 
-"" Always show the name of the file being edited.
+"" always show the name of the file being edited
 set ls=2
 
-"" Show the mode (insert,replace,etc.)
+"" show the mode (insert,replace,etc.)
 set showmode
 
-"" No blinking cursor please.
+"" no blinking cursor please
 set gcr=a:blinkon0
 
-"" Do not show any line of minimized windows
+"" do not show any line of minimized windows
 set wmh=0
 set wmw=0
 
-"" After this many msecs do not imap.
+"" after this many msecs do not imap
 set timeoutlen=500
 
-"" Set update time to 0.5 second (default is 4 seconds), convenient for taglist.vim.
-set updatetime=250
+"" set update time to 0.5 second (default is 4 seconds), convenient for taglist.vim.
+set updatetime=100
 
-"" Toggle between .h and .cpp with F4.
-function! ToggleBetweenHeaderAndSourceFile()
-  let bufname = bufname("%")
-  let ext = fnamemodify(bufname, ":e")
-  if ext == "h"
-    let ext = "cpp"
-  elseif ext == "cpp"
-    let ext = "h"
-  else
-    return
-  endif
-  let bufname_new = fnamemodify(bufname, ":r") . "." . ext
-  let bufname_alt = bufname("#")
-  if bufname_new == bufname_alt
-    execute ":e#"
-  else
-    execute ":e " . bufname_new
-  endif
-endfunction
-map <silent> <F4> :call ToggleBetweenHeaderAndSourceFile()<CR>
-
-"" Set backspace
+"" set backspace
 set backspace=indent,eol,start
 
-"" Cycling through Windows quicker.
+"" automatically close location lists when leaving a buffer
+au BufWinLeave * if empty(&bt) | lclose | endif
+
+"" move between splits
 nnoremap <c-h> <c-w>h
 nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
@@ -137,27 +119,34 @@ inoremap <Down> <Nop>
 inoremap <PageUp> <Nop>
 inoremap <PageDown> <Nop>
 
-"" Maps
+"" maps
 nnoremap <silent> <Esc><Esc> :nohlsearch<CR>
 nnoremap ! :!
+nnoremap <silent> <return> :w<CR>:wa<CR>
 nnoremap <tab> :bn<CR>
 nnoremap <s-tab> :bp<CR>
 nnoremap <space> :tabn<CR>
 nnoremap <backspace> :tabp<CR>
 nnoremap gm m
-nmap <silent> n /<CR>zz
-nmap <silent> N ?<CR>zz
+nnoremap <silent> n /<CR>zz
+nnoremap <silent> N ?<CR>zz
+nnoremap <silent> <c-p> :lnext<CR>zz
+nnoremap <silent> <c-o> :lprevious<CR>zz
+nnoremap <silent> <c-y> :cprevious<CR>zz
+nnoremap <silent> <c-u> :cnext<CR>zz
 
-"" Leader maps
+"" leader maps
 nnoremap <Leader>s :source $HOME/.vimrc
 nnoremap <Leader>v :e $HOME/.vimrc
 nnoremap <Leader>sudo :w !sudo tee %
-nnoremap <Leader>m  :<c-u><c-r>='let @'. v:register .' = '. string(getreg(v:register))<cr><c-f><left>
+nnoremap <Leader>m :<c-u><c-r>='let @'. v:register .' = '. string(getreg(v:register))<cr><c-f><left>
+nnoremap <Leader>j :set ft=javascript<CR>
+nnoremap <Leader>h :set ft=html<CR>
 
-"" Abbreviations
+"" abbreviations
 iab lorem Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 
-"" Functions
+"" functions
 function! HtmlEntities(line1, line2, action)
   let search = @/
   let range = 'silent ' . a:line1 . ',' . a:line2
@@ -178,8 +167,8 @@ function! HtmlEntities(line1, line2, action)
 endfunction
 command! -range -nargs=1 Escape call HtmlEntities(<line1>, <line2>, <args>)
 
-"" Plugins
-let g:closetag_html_style=1 
+"" plugins
+let g:closetag_html_style=1
 so ~/.vim/scripts/matchit.vim
 so ~/.vim/scripts/closetag.vim
 
@@ -190,17 +179,15 @@ nnoremap <Leader>p :Files<CR>
 nnoremap <Leader>l :Lines<CR>
 
 "" Neomake
-autocmd! BufWritePost * Neomake
-nnoremap <silent> <c-p> :lnext<CR>zz
-nnoremap <silent> <c-o> :lprevious<CR>zz
+au! BufWrite *.js,*.html,*.css,*.scss,*.py Neomake
 let g:neomake_open_list=2
-let g:neomake_list_height=10
-" let g:neomake_javascript_enabled_makers=['eslint']
-" let g:neomake_javascript_eslint_maker= {
-" 	\ 'args': ['-f', 'compact'],
-" 	\ 'errorformat': '%E%f: line %l\, col %c\, Error - %m,' .
-" 	\ '%W%f: line %l\, col %c\, Warning - %m'
-" \ }
+let g:neomake_list_height=5
+let g:neomake_javascript_enabled_makers=['eslint']
+let g:neomake_javascript_eslint_maker= {
+	\ 'args': ['-f', 'compact', '-c', '/Users/biku1/.eslintrc'],
+	\ 'errorformat': '%E%f: line %l\, col %c\, Error - %m,' .
+	\ '%W%f: line %l\, col %c\, Warning - %m'
+\ }
 let g:neomake_warning_sign = {
 	\ 'text': 'W>'
 \ }
@@ -246,17 +233,73 @@ let g:rbpt_colorpairs=[
     \ ]
 
 "" TagBar settings
-nmap <F1> :TagbarToggle<CR>
+nnoremap <F1> :TagbarToggle<CR>
 let g:tagbar_width=60
 
-"" Javascript settings
-nnoremap <Leader>c "cdiWaconsole.log('<ESC>"cpa = ', <ESC>"cpa);<ESC>
-nnoremap <Leader>z $zfa}
+"" vim-go
+let g:go_fmt_command = "goimports"
+let g:go_snippet_case_type = "camelcase"
+let g:go_highlight_types = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_build_constraints = 1
+let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
+let g:go_metalinter_autosave_enabled = ['vet', 'golint', 'errcheck']
+let g:go_metalinter_autosave = 1
+" let g:go_auto_type_info = 1
 
-"" Delete Trailing Whitespaces
-au BufWritePre *.js,*.html,*.css,*.scss :%s/\s\+$//e
+"" delete trailing whitespaces
+au BufWritePre *.js,*.html,*.css,*.scss,*.py :%s/\s\+$//e
 
-"" run commands
-au FileType javascript :map <Leader>r :!node %<CR>
-au FileType go :map <Leader>r :!go run %<CR>
-au FileType python :map <Leader>r :!python %<CR>
+"" language specific mappings
+
+"" javascript
+au FileType javascript nnoremap <Leader>r :!node %<CR>
+au FileType javascript nnoremap <Leader>t :!gulp test-server<CR>
+au FileType javascript nnoremap <Leader>c "cdiWaconsole.log('<ESC>"cpa = ', <ESC>"cpa);<ESC>
+au FileType javascript nnoremap <Leader>z $zfa}
+
+"" golang
+function! s:build_go_files()
+  let l:file = expand('%')
+  if l:file =~# '^\f\+_test\.go$'
+    call go#cmd#Test(0, 1)
+  elseif l:file =~# '^\f\+\.go$'
+    call go#cmd#Build(0)
+  endif
+endfunction
+
+au FileType go map <Leader>r <Plug>(go-run)
+au FileType go map <Leader>b :<C-u>call <SID>build_go_files()<CR>
+au FileType go map <Leader>t <Plug>(go-coverage-toggle)
+au Filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
+au Filetype go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
+au Filetype go command! -bang AS call go#alternate#Switch(<bang>0, 'split')
+
+"" python
+au FileType python nnoremap <Leader>r :!python %<CR>
+
+"" c++
+function! ToggleBetweenHeaderAndSourceFile()
+  let bufname = bufname("%")
+  let ext = fnamemodify(bufname, ":e")
+  if ext == "h"
+    let ext = "cpp"
+  elseif ext == "cpp"
+    let ext = "h"
+  else
+    return
+  endif
+  let bufname_new = fnamemodify(bufname, ":r") . "." . ext
+  let bufname_alt = bufname("#")
+  if bufname_new == bufname_alt
+    execute ":e#"
+  else
+    execute ":e " . bufname_new
+  endif
+endfunction
+
+au FileType cpp nnoremap <silent> <F4> :call ToggleBetweenHeaderAndSourceFile()<CR>
+
+"" tabs are needed in makefiles
+au BufNewFile,BufReadPost Makefile set noexpandtab
