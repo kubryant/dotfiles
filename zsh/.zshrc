@@ -45,6 +45,13 @@ function fda {
   dir=$(find ${1:-.} -type d 2> /dev/null | fzf-tmux +m) && cd "$dir"
 }
 
+# maps
+export WORDCHARS='*?_[]~=&;!#$%^(){}/.-'
+bindkey "^B" backward-word
+bindkey "^W" forward-word
+bindkey "^D" backward-kill-word
+bindkey "^U" undo
+
 # command alias
 alias ll='ls -lah'
 
@@ -53,6 +60,7 @@ alias vms='VBoxManage list runningvms'
 alias vimgm='vim $(git status --short | sed -ne "s/^ *M //p")'
 alias vimgc='vim $(git status --short | sed -ne "s/^ *UU //p")'
 alias vimrc='vim ~/.vimrc'
+alias zshrc='vim ~/.zshrc'
 alias loc='find . -name "*.js" | xargs wc -l'
 alias rg='rg --ignore-case'
 alias gbd='gb -D $(gb) 2>/dev/null'
