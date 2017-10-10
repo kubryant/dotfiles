@@ -31,10 +31,17 @@ set hlsearch
 set incsearch
 set ignorecase
 set smartcase
+set gdefault
+set wildmenu
+set wildmode=full
 
 "" buffer settings
 set hidden
-set foldmethod=manual
+augroup vimrc
+  au BufReadPre * setlocal foldmethod=syntax
+  au BufWinEnter * if &fdm == 'syntax' | setlocal foldmethod=manual | endif
+augroup END
+autocmd Syntax * normal zR
 
 "" set textwidth to 80, this implies word wrap.
 "" set textwidth=80
@@ -51,6 +58,8 @@ set relativenumber
 "" tabs settings
 filetype plugin indent on
 set autoindent
+set breakindent
+set showbreak=\\\\\
 
 "" 4 space hard tabs
 set tabstop=4
@@ -120,6 +129,8 @@ inoremap <PageUp> <Nop>
 inoremap <PageDown> <Nop>
 
 "" maps
+nnoremap <expr> j v:count ? (v:count > 5 ? "m'" . v:count : '') . 'j' : 'gj'
+nnoremap <expr> k v:count ? (v:count > 5 ? "m'" . v:count : '') . 'k' : 'gk'
 nnoremap <silent> <Esc><Esc> :nohlsearch<CR>
 nnoremap ! :!
 nnoremap <silent> <return> :w<CR>:wa<CR>
@@ -132,8 +143,9 @@ nnoremap <silent> n /<CR>zz
 nnoremap <silent> N ?<CR>zz
 nnoremap <silent> <c-p> :lnext<CR>zz
 nnoremap <silent> <c-o> :lprevious<CR>zz
-nnoremap <silent> <c-y> :cprevious<CR>zz
-nnoremap <silent> <c-u> :cnext<CR>zz
+" nnoremap <silent> <c-y> :cprevious<CR>zz
+" nnoremap <silent> <c-u> :cnext<CR>zz
+" nnoremap <silent> <c-q> :lcl<CR>
 
 "" leader maps
 nnoremap <Leader>s :source $HOME/.vimrc
@@ -179,9 +191,15 @@ nnoremap <Leader>p :Files<CR>
 nnoremap <Leader>l :Lines<CR>
 
 "" Neomake
-au! BufWrite *.js,*.html,*.css,*.scss,*.py Neomake
+au! BufWrite *.js,*.html,*.css,*.scss,*.py,*.json Neomake
 let g:neomake_open_list=2
-let g:neomake_list_height=5
+let g:neomake_list_height=10
+let g:neomake_json_enabled_makers=['eslint']
+let g:neomake_json_eslint_maker= {
+	\ 'args': ['-f', 'compact', '-c', '/Users/biku1/.eslintrc'],
+	\ 'errorformat': '%E%f: line %l\, col %c\, Error - %m,' .
+	\ '%W%f: line %l\, col %c\, Warning - %m'
+\ }
 let g:neomake_javascript_enabled_makers=['eslint']
 let g:neomake_javascript_eslint_maker= {
 	\ 'args': ['-f', 'compact', '-c', '/Users/biku1/.eslintrc'],
@@ -206,6 +224,14 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 "" Gutentags settings
 let g:gutentags_cache_dir='~/.vim/tags'
+let g:gutentags_ctags_exclude=[
+	\'*.css', '*.html', '*.json', '*.xml',
+	\ '*.phar', '*.ini', '*.rst', '*.md',
+	\ 'node_modules', 'ios', 'android'
+	\ ]
+let g:tagbar_sort=0
+let g:tagbar_compact=1
+let g:tagbar_show_linenumbers=1
 
 "" Rainbow Parenthesis
 au VimEnter * RainbowParenthesesToggle
@@ -248,16 +274,21 @@ let g:go_metalinter_autosave_enabled = ['vet', 'golint', 'errcheck']
 let g:go_metalinter_autosave = 1
 " let g:go_auto_type_info = 1
 
+"" vim-json
+let g:vim_json_syntax_conceal = 0
+let g:vim_json_warnings=0
+
 "" delete trailing whitespaces
-au BufWritePre *.js,*.html,*.css,*.scss,*.py :%s/\s\+$//e
+au BufWritePre *.js,*.html,*.css,*.scss,*.py,*.json :%s/\s\+$//e
 
 "" language specific mappings
 
-"" javascript
-au FileType javascript nnoremap <Leader>r :!node %<CR>
-au FileType javascript nnoremap <Leader>t :!gulp test-server<CR>
+"" javascript/json
+au FileType javascript nnoremap <Leader>r :!babel-node --presets ~/.nvm/versions/node/v7.2.0/lib/node_modules/babel-preset-latest %<CR>
+au FileType javascript,json nnoremap <Leader>t :!gulp test-server<CR>
 au FileType javascript nnoremap <Leader>c "cdiWaconsole.log('<ESC>"cpa = ', <ESC>"cpa);<ESC>
-au FileType javascript nnoremap <Leader>z $zfa}
+au FileType javascript,json nnoremap <Leader>z $zfa}
+au FileType javascript nnoremap <Leader>gc :g/console/exe "normal gcc"<CR>
 
 "" golang
 function! s:build_go_files()
@@ -303,3 +334,6 @@ au FileType cpp nnoremap <silent> <F4> :call ToggleBetweenHeaderAndSourceFile()<
 
 "" tabs are needed in makefiles
 au BufNewFile,BufReadPost Makefile set noexpandtab
+
+"" autoresize splits when resizing window
+autocmd VimResized * wincmd =
